@@ -1,0 +1,109 @@
+PROYECTO TAEKWONDO - MARCADOR + 2 JUECES POR CELULAR
+=====================================================
+
+IMPORTANTE
+----------
+Este proyecto está pensado para Visual Studio + Windows Forms .NET Framework 4.8.
+
+ARQUITECTURA
+------------
+PC Windows:
+- Muestra el marcador.
+- Ejecuta el servidor local.
+- Controla el tiempo.
+- Recibe las acciones de los 2 jueces.
+- Solo suma un punto cuando Juez 1 y Juez 2 seleccionan exactamente la misma acción,
+  lado y tipo de punto dentro de 1 segundo.
+
+Celulares:
+- Abren juez.html en el navegador.
+- Juez 1 usa su token.
+- Juez 2 usa su token.
+- No necesitan instalar una app.
+
+RED
+---
+QR NO ES UNA RED. El QR solo contiene el enlace.
+
+Para trabajar sin Internet ni una red Wi-Fi externa:
+1. Activa "Zona con cobertura móvil / Mobile hotspot" en Windows.
+2. Los dos celulares se conectan al hotspot creado por la PC.
+3. En la PC pulsa INICIAR SERVIDOR.
+4. Usa el enlace mostrado para cada juez.
+
+NOTA SOBRE EL QR DE ESTA ENTREGA
+--------------------------------
+La aplicación base NO usa una librería externa para generar QR.
+El cuadro que aparece en lugar del QR contiene el enlace.
+Esto evita dependencias y problemas de NuGet.
+
+Para tener QR real:
+- Instala el paquete NuGet "QRCoder".
+- Luego reemplaza CrearQr() en MainForm.cs por un generador QRCoder.
+El servidor y la comunicación no dependen de QRCoder.
+
+INSTALACIÓN
+-----------
+1. Abre Visual Studio.
+2. Crea un proyecto:
+   "Aplicación de Windows Forms (.NET Framework)"
+   Framework: .NET Framework 4.8
+3. Nombre recomendado: TaekwondoScoreboard
+4. Borra Form1.cs si no lo necesitas.
+5. Agrega estos archivos:
+   Program.cs
+   MainForm.cs
+   ScoreServer.cs
+   MatchState.cs
+6. Crea una carpeta:
+   wwwroot
+7. Dentro coloca:
+   juez.html
+   juez.css
+   juez.js
+8. En Propiedades de cada archivo de wwwroot:
+   "Copiar si es posterior" o "Copiar siempre" a la carpeta de salida.
+   Si Visual Studio no muestra esa opción, agrega los archivos al proyecto y marca
+   Copy to Output Directory = Copy if newer.
+9. Compila.
+
+FIREWALL
+--------
+La primera vez Windows puede preguntar si permite acceso.
+Permite la aplicación en redes privadas.
+
+Si aparece "No se pudo iniciar el servidor" por permisos de HttpListener,
+abre Visual Studio como administrador o registra una URL ACL para el puerto 8080.
+
+PRUEBA
+------
+1. Ejecuta la PC.
+2. Pulsa INICIAR SERVIDOR.
+3. Conecta ambos celulares al hotspot de la PC.
+4. En cada celular abre el enlace correspondiente.
+5. Pulsa INICIAR COMBATE en la PC.
+6. Los dos jueces deben pulsar el mismo botón.
+7. Si coinciden dentro de 1 segundo, se suma el punto.
+
+REGLAS IMPLEMENTADAS
+--------------------
+- 3 rondas.
+- 2 minutos por ronda.
+- 1 punto: puño al tronco.
+- 2 puntos: patada al tronco.
+- 3 puntos: patada a cabeza.
+- 4 puntos: patada giratoria a cabeza.
+- Kyong-go: 1 punto al contrario.
+- Gam-jeom: 2 puntos al contrario.
+- Diferencia de 12 puntos: gana la ronda.
+- Primero en ganar 2 rondas: gana el combate.
+- Coincidencia de jueces requerida dentro de 1 segundo.
+
+PENDIENTE PARA LA SIGUIENTE VERSION
+------------------------------------
+- Descanso automático de 1 minuto entre rondas.
+- Ronda 4 de golden point en caso de empate.
+- QR REAL integrado.
+- Indicadores visuales de "Juez 1 conectado" y "Juez 2 conectado".
+- Bloqueo de botones durante descanso/final.
+- Registro de eventos y correcciones administrativas.

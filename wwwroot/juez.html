@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no">
+
+    <meta name="theme-color"
+          content="#101010">
+
+    <title>Taekwondo - Juez</title>
+
+    <link rel="stylesheet"
+          href="juez.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="titulo">
+            TAEKWONDO
+        </div>
+
+        <div id="juez">
+            JUEZ
+        </div>
+
+        <div id="conexion"
+             class="desconectado">
+
+            ● DESCONECTADO
+
+        </div>
+
+    </header>
+
+
+    <section class="informacion">
+
+        <div>
+            <span>RONDA</span>
+            <strong id="ronda">1</strong>
+        </div>
+
+        <div class="reloj">
+            <span>TIEMPO</span>
+            <strong id="tiempo">2:00</strong>
+        </div>
+
+    </section>
+
+
+    <section class="marcador">
+
+        <div class="competidor azul">
+
+            <div class="nombre">
+                AZUL
+            </div>
+
+            <div id="scoreAzul"
+                 class="score">
+
+                0
+
+            </div>
+
+        </div>
+
+
+        <div class="competidor rojo">
+
+            <div class="nombre">
+                ROJO
+            </div>
+
+            <div id="scoreRojo"
+                 class="score">
+
+                0
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="acciones">
+
+        <!-- AZUL -->
+
+        <div class="columna azulColumna">
+
+            <h2>AZUL</h2>
+
+
+            <button onclick="enviarAccion(
+                    'blue',
+                    'Punch1'
+                )">
+
+                +1
+
+                <small>
+                    PUÑO TRONCO
+                </small>
+
+            </button>
+
+
+            <button onclick="enviarAccion(
+                    'blue',
+                    'Body2'
+                )">
+
+                +2
+
+                <small>
+                    PATADA TRONCO
+                </small>
+
+            </button>
+
+
+            <button onclick="enviarAccion(
+                    'blue',
+                    'Head3'
+                )">
+
+                +3
+
+                <small>
+                    PATADA CABEZA
+                </small>
+
+            </button>
+
+
+            <button onclick="enviarAccion(
+                    'blue',
+                    'SpinHead4'
+                )">
+
+                +4
+
+                <small>
+                    GIRO CABEZA
+                </small>
+
+            </button>
+
+
+            <button class="gamjeom"
+                    onclick="enviarAccion(
+                    'blue',
+                    'GamJeom'
+                )">
+
+                GAM-JEOM
+
+                <small>
+                    +1 AL ROJO
+                </small>
+
+            </button>
+
+        </div>
+
+
+        <!-- ROJO -->
+
+        <div class="columna rojoColumna">
+
+            <h2>ROJO</h2>
+
+
+            <button onclick="enviarAccion(
+                    'red',
+                    'Punch1'
+                )">
+
+                +1
+
+                <small>
+                    PUÑO TRONCO
+                </small>
+
+            </button>
+
+
+            <button onclick="enviarAccion(
+                    'red',
+                    'Body2'
+                )">
+
+                +2
+
+                <small>
+                    PATADA TRONCO
+                </small>
+
+            </button>
+
+
+            <button onclick="enviarAccion(
+                    'red',
+                    'Head3'
+                )">
+
+                +3
+
+                <small>
+                    PATADA CABEZA
+                </small>
+
+            </button>
+
+
+            <button onclick="enviarAccion(
+                    'red',
+                    'SpinHead4'
+                )">
+
+                +4
+
+                <small>
+                    GIRO CABEZA
+                </small>
+
+            </button>
+
+
+            <button class="gamjeom"
+                    onclick="enviarAccion(
+                    'red',
+                    'GamJeom'
+                )">
+
+                GAM-JEOM
+
+                <small>
+                    +1 AL AZUL
+                </small>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section id="mensaje"
+             class="mensaje">
+
+        ESPERANDO CONEXIÓN...
+
+    </section>
+
+
+    <script src="juez.js"></script>
+
+</body>
+</html>

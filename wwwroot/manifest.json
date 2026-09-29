@@ -1,0 +1,12 @@
+{
+  "name": "Taekwondo Juez",
+  "short_name": "Juez TKD",
+  "description": "Sistema de puntuación para jueces de taekwondo",
+  "start_url": "./juez.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "lang": "es",
+  "icons": []
+}
